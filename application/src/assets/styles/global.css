@@ -2,7 +2,7 @@
      --color-background: #F0F0F7;
      --color-primary-lighter: #cadffc;
      --color-primary-light: #916BEA;
-     --color-primary: #8257E5;
+     --color-primary: #accef1;
      --color-primary-dark: #774DD6;
      --color-primary-darker: #6842C2;
      --color-secundary: #accef1;
@@ -46,6 +46,7 @@ input,
 button,
 textarea {
     font: 500 1.6rem Poppins;
+    color: var(--color-text-base);
 }
 
 .container {

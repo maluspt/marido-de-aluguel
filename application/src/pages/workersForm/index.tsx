@@ -1,8 +1,14 @@
 import React from 'react';
+import PageHeader from '../../components/PageHeader';
+
+
 
 function WorkersForm() {
     return (
-        <h1>Prestadores</h1>
+        <div id="page-worker-form" className="container">
+            <PageHeader
+                title="Consiga mais clientes usando Marido de Aluguel." />
+        </div >
     )
 }
 
