@@ -7,29 +7,6 @@
     margin-top: 3.2rem;
 }
 
-#search-workers .input-block {
-    position: relative;
-}
-#search-workers .input-block + .input-block {
-    margin-top: 1.4rem;
-}
-
-#search-workers .input-block label {
-    font-size: 1.4rem;
-}
-
-#search-workers .input-block input {
-    width: 100%;
-    height: 5.6rem;
-    margin-top: 0.8rem;
-    border-radius: 0.8rem;
-    background: var(--color-input-background);
-    border: 1px solid var(--color-line-in-white);
-    outline: 0;
-    padding: 0 1.6rem;
-    font: 1.6rem Archivo;
-}
-
 #page-worker-list main {
     margin: 3.2rem auto;
     width: 90%;
@@ -48,7 +25,8 @@
         bottom: -30px;
     }
 
-    #search-workers .input-block + .input-block {
+    #search-workers .input-block + .input-block,
+    #search-workers .select-block + .select-block {
         margin-top: 0;
     }
 
