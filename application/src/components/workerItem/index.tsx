@@ -1,22 +1,35 @@
 import React from 'react';
 import './styles.css';
 
+export interface Worker {
+    name: string;
+    avatar: string;
+    bio: string;
+    category: string;
+    email: string;
+    cellphone: string;
+    id: number;
+    cpf: string;
+    speciallity: string;
+}
 
-const WorkerItem = () => {
+interface WorkerItemProps {
+    worker: Worker;
+}
+
+const WorkerItem: React.FC<WorkerItemProps> = ({ worker }) => {
     return (
         <article className="worker-item">
             <header>
-                <img src="https://avatars1.githubusercontent.com/u/32915782?s=460&u=4b115edf3177bd27df14d2ca657787d8ed67846c&v=4" alt="avatar" />
+                <img src={worker.avatar} alt="avatar" />
                 <div>
-                    <strong>Maria Sperotto</strong>
-                    <span> Eletricista </span>
+                    <strong>{worker.name}</strong>
+                    <span>{worker.category}</span>
                 </div>
             </header>
             <p>
-                Apaixonado por eletricidade.
-                        <br /><br />
-                        Trabalho desde 1998 fazendo concertos na área elétrica, nunca explodi nada nem ninguém. Serviço de qualidade garantido!
-                    </p>
+                {worker.bio}
+            </p>
 
             <footer>
                 <p>

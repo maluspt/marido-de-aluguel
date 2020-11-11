@@ -1,18 +1,42 @@
-import React from 'react';
+import React, { FormEvent, useState } from 'react';
 import Input from '../../components/Input';
 import PageHeader from '../../components/PageHeader';
-import WorkerItem from '../../components/workerItem';
+import WorkerItem, { Worker } from '../../components/workerItem';
 import Select from '../../components/Select';
 import './styles.css';
+import api from '../../services/api';
+
 
 
 function WorkersList() {
+    const [workers, setWorkers] = useState([]);
+    const [category, setCategory] = useState('');
+    const [day, setDay] = useState('');
+    const [time, setTime] = useState('');
+
+    async function searchTeachers(e: FormEvent) {
+        e.preventDefault();
+
+        const response = await api.get('services', {
+            params: {
+                category,
+                day,
+                time,
+            }
+        });
+
+        setWorkers(response.data);
+
+    }
+
     return (
         <div id="page-worker-list" className="container">
             <PageHeader title="Encontre o prestador de serviço ideal para você.">
-                <form id="search-workers">
+                <form id="search-workers" onSubmit={searchTeachers}>
                     <Select name="category"
                         label="Categoria"
+                        value={category}
+                        onChange={e => { setCategory(e.target.value) }}
                         options={[
                             { value: 'Eletricista', label: 'Eletricista' },
                             { value: 'Pintor', label: 'Pintor' },
@@ -24,6 +48,8 @@ function WorkersList() {
                         ]} />
                     <Select name="day"
                         label="Dia da semana"
+                        value={day}
+                        onChange={e => { setDay(e.target.value) }}
                         options={[
                             { value: '1', label: 'Segunda-feira' },
                             { value: '2', label: 'Terça-feira' },
@@ -34,15 +60,23 @@ function WorkersList() {
                             { value: '0', label: 'Domingo' }
                         ]} />
 
-                    <Input type="time" name="time" label="Horário" />
+                    <Input
+                        type="time"
+                        name="time"
+                        label="Horário"
+                        value={time}
+                        onChange={e => { setTime(e.target.value) }} />
+
+                    <button type="submit">Buscar</button>
                 </form>
             </PageHeader>
 
             <main>
-                <WorkerItem />
-                <WorkerItem />
-                <WorkerItem />
-                <WorkerItem />
+                {workers.map((worker: Worker) => {
+                    return <WorkerItem key={worker.id} worker={worker} />
+                })}
+
+
             </main>
         </div >
     )
