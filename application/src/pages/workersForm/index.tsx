@@ -5,12 +5,15 @@ import Textarea from '../../components/TextArea';
 import Select from '../../components/Select';
 import './styles.css';
 import { useHistory } from 'react-router-dom';
+import Dropzone from '../../components/Dropzone';
 import api from '../../services/api';
 
 
 
 function WorkersForm(): ReactElement {
     const history = useHistory();
+
+    const [selectedFile, setSelectedFile] = useState<File>()
 
     const [name, setName] = useState('');
     const [avatar, setAvatar] = useState('');
@@ -37,7 +40,7 @@ function WorkersForm(): ReactElement {
 
         api.post('services', {
             name,
-            avatar,
+            avatar: selectedFile,
             cpf,
             email,
             cellphone,
@@ -79,11 +82,7 @@ function WorkersForm(): ReactElement {
                             value={name}
                             onChange={(e) => { setName(e.target.value) }}
                         />
-                        <Input
-                            name="avatar"
-                            label="Avatar"
-                            value={avatar}
-                            onChange={(e) => { setAvatar(e.target.value) }} />
+                        <Dropzone onFileUploaded={setSelectedFile} />
                         <Input
                             name="cpf"
                             label="CPF"

@@ -1,5 +1,7 @@
 import React from 'react';
 import './styles.css';
+import { Link } from 'react-router-dom'
+
 
 export interface Worker {
     name: string;
@@ -36,9 +38,12 @@ const WorkerItem: React.FC<WorkerItemProps> = ({ worker }) => {
                     Rank de avaliação:
                             <strong> #23</strong>
                 </p>
-                <button type="button">
-                    Solicitar orçamento
-                        </button>
+                <div className="buttons-container">
+                    <Link to="/quote" className="quote">
+                        Solicitar orçamento
+                    </Link>
+                </div>
+
             </footer>
 
         </article>

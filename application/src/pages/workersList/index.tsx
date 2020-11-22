@@ -72,10 +72,15 @@ function WorkersList() {
             </PageHeader>
 
             <main>
-                {workers.map((worker: Worker) => {
-                    return <WorkerItem key={worker.id} worker={worker} />
-                })}
-
+                {workers[0] ? (
+                    workers.map((worker: Worker) => (
+                        <WorkerItem key={worker.id} worker={worker} />
+                    ))
+                ) : (
+                        <p>
+                            Nenhum profissional encontrado com sua busca.
+                        </p>
+                    )}
 
             </main>
         </div >
