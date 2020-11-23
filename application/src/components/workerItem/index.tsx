@@ -36,7 +36,7 @@ const WorkerItem: React.FC<WorkerItemProps> = ({ worker }) => {
             <footer>
                 <p>
                     Rank de avaliação:
-                            <strong> #23</strong>
+                            <strong>#{Math.floor(Math.random() * (500 - 1) + 1)}</strong>
                 </p>
                 <div className="buttons-container">
                     <Link to="/quote" className="quote">

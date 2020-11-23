@@ -50,11 +50,9 @@ export default class ServiceController {
             cpf,
             email,
             cellphone,
-            address,
             bio,
             category,
             speciallity,
-            ranking,
             schedule
         } = request.body;
 
@@ -67,9 +65,7 @@ export default class ServiceController {
                 cpf,
                 email,
                 cellphone,
-                address,
-                bio,
-                ranking
+                bio
             });
 
             const worker_id = insertedWorkersIds[0];

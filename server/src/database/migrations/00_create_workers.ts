@@ -6,11 +6,9 @@ export async function up(knex: Knex) {
         table.string('name').notNullable();
         table.string('cpf').notNullable();
         table.string('email').notNullable();
-        table.string('address').notNullable();
         table.string('cellphone').notNullable();
         table.string('bio').notNullable();
         table.string('avatar').notNullable();
-        table.integer('ranking').notNullable();
     });
 }
 

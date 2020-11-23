@@ -16,7 +16,6 @@ function WorkersForm(): ReactElement {
     const [selectedFile, setSelectedFile] = useState<File>()
 
     const [name, setName] = useState('');
-    const [avatar, setAvatar] = useState('');
     const [email, setEmail] = useState('');
     const [cellphone, setCellphone] = useState('');
     const [bio, setBio] = useState('');
@@ -54,6 +53,8 @@ function WorkersForm(): ReactElement {
         }).catch(() => {
             alert('Erro no cadastro. Tente novamente.');
         })
+
+        console.log(selectedFile)
     }
 
     function setScheduleItemValue(position: number, field: string, value: string) {
@@ -82,7 +83,6 @@ function WorkersForm(): ReactElement {
                             value={name}
                             onChange={(e) => { setName(e.target.value) }}
                         />
-                        <Dropzone onFileUploaded={setSelectedFile} />
                         <Input
                             name="cpf"
                             label="CPF"
@@ -103,13 +103,16 @@ function WorkersForm(): ReactElement {
                             value={cellphone}
                             onChange={(e) => { setCellphone(e.target.value) }}
                         />
-
                         <Textarea
                             name="bio"
                             label="Fale mais sobre você"
                             value={bio}
                             onChange={(e) => { setBio(e.target.value) }}
                         />
+                    </fieldset>
+                    <fieldset>
+                        <legend>Adicione uma foto sua</legend>
+                        <Dropzone onFileUploaded={setSelectedFile} />
                     </fieldset>
                     <fieldset>
                         <legend>Sobre seu serviço</legend>
